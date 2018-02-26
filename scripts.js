@@ -283,3 +283,97 @@ function sortTable() {
     }
   }
 }
+
+//calculator by Ashiqu
+
+var numBtn = document.getElementsByClassName("num-btn");
+var opBtn = document.getElementsByClassName("op-btn");
+var result = document.getElementById("result");
+var x=0, y=0, isPtClicked = 0, isEquClicked = 0, operator='';
+
+//onclick clear button
+document.getElementById("clr-btn").addEventListener("click",function(){
+  x = 0; result.value = '0'; isPtClicked = 0; operator = '', isEquClicked = 0;
+})
+
+//onclick Numbers
+for (var i = 0; i < numBtn.length; i++) {
+  numBtn[i].addEventListener("click", function(e){
+    if(result.value == "0" && e.target.value != '.')
+      result.value = '';
+    if(e.target.value == '.'){
+      if(isPtClicked == 0){
+        result.value += e.target.value;
+        isPtClicked++;
+      }
+    }
+    else {
+      result.value += e.target.value;
+    }
+  })
+}
+
+//onclick operators
+for (var i = 0; i < opBtn.length; i++) {
+  opBtn[i].addEventListener("click", function(e){
+    operator = e.target.value;
+    isPtClicked=0;
+    x = Number(result.value);
+
+    if(operator == "x^2"){
+      x = x ** 2;
+      if(Number.isInteger(x) == 0){
+          result.value = x.toFixed(16);
+      }
+      else {
+        result.value = x;
+      }
+    }
+    else if (operator == "√") {
+      x = Math.sqrt(x);
+      if(Number.isInteger(x) == 0){
+          result.value = x.toFixed(16);
+      }
+      else {
+        result.value = x;
+      }
+    }
+    else{
+      result.value = "0";
+      isEquClicked = 0;
+    }
+  })
+}
+
+//onclick Equal button
+document.getElementById("equal-btn").addEventListener("click",function(e){
+  if(isEquClicked == 0){
+    y = Number(result.value);
+    isEquClicked++;
+  }
+  switch (operator) {
+    case '+':
+      x += y;
+      break;
+    case '-':
+      x -= y;
+      break;
+    case '*':
+      x *= y;
+      break;
+    case '/':
+      x /= y;
+      break;
+    case '%':
+      x =x%y;
+      break;
+    default:
+      window.alert("ERROR: insufficient inputs!!")
+  }
+  if(Number.isInteger(x) == 0){
+      result.value = x.toFixed(14);
+  }
+  else {
+    result.value = x;
+  }
+})

@@ -133,3 +133,46 @@
 #data_table td {
   text-align: center;
 }
+
+/*-----Calculator----*/
+.calculator{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.calc-container{
+  width: 330px;
+  background: #ffffe6;
+  border: 2px outset #e6e6e6;
+  border-radius: 6px;
+  margin: 20px;
+  padding: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.9);
+}
+.screen td{
+  height: 100px;
+  padding: 0;
+}
+.screen input{
+  border: 2px inset #b3b3b3;
+  background-color: #ffffff;
+  border-radius: 5px;
+  color: black;
+  padding-left: 5px;
+}
+.calc-btn{
+  width:70px;
+  height: 50px;
+  border-radius: 7px;
+  background-color: #e6e6e6;
+  color: #2F4F4F;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 20px;
+  margin: 2px;
+  cursor: pointer;
+}
+.calc-btn:hover{
+  background-color: #ffffff;
+}
